@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<flow name="mulee_event-demoFlow" doc:id="360d774c-3f76-46db-b456-937429e9b1fd" >
+		<http:listener doc:name="Listener" doc:id="2a8f37e5-a0e8-46e3-9e79-ca87e864f9f8" config-ref="HTTP_Listener_config" path="muleevent"/>
+		<logger level="INFO" doc:name="print payload" doc:id="f0775e63-d723-4d2e-8bd3-57407517de5e" />
+		<logger level="INFO" doc:name="Print query params" doc:id="d9db8dce-e8c1-4c3e-89f1-d71971813d5f" />
+	</flow>
+</mule>

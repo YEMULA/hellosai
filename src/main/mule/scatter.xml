@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="scatterFlow" doc:id="0a6404bc-51c6-42e4-8dbb-0976a5980867" >
+		<scatter-gather doc:name="Scatter-Gather" doc:id="f2f7600d-012c-4e15-bc1f-80af010ba0dc" >
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="65dc6722-d0c5-440b-9836-be3bdec038f1" message="================ logger 1 message"/>
+				<ee:transform doc:name="Transform Message" doc:id="22877387-0330-40fc-a8b8-52ce3eed320c" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"movie" : "RRR",
+	"location" : "hyd"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="8312267d-acc7-4acc-b6e4-d585f2aedd09" message="================ logger 2 message"/>
+				<ee:transform doc:name="Transform Message" doc:id="c572e659-3ed4-4f31-9428-e5b98d1238ec" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"movie" : "RRR",
+	"location" : "chennai"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</route>
+			<route >
+				<logger level="INFO" doc:name="Logger" doc:id="bb64f64c-cae8-4efe-bada-7e4cd1dd19bc" message="================ logger 3 message"/>
+				<ee:transform doc:name="Transform Message" doc:id="4adbb35d-9c3c-4318-98ff-8f98f251b50e" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	"movie" : "RRR",
+	"location" : "vizag"
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
+			</route>
+		</scatter-gather>
+		<ee:transform doc:name="Transform Message" doc:id="ea2cd248-fb31-4133-a86f-d738f36269b6" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload..payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>
